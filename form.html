@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shark Showdown Series | Registration</title>
+  <!-- Font: Share Tech Mono for professional, gaming style -->
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Share Tech Mono', monospace;
+      background: #F4EBEC;
+      color: #4a124a;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 16px;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+      padding: 0 16px;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    header .logo {
+      height: 56px;
+      object-fit: contain;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    header .logo:hover {
+      transform: scale(1.05);
+    }
+    .site-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #873887;
+      user-select: none;
+      font-family: 'Share Tech Mono', monospace;
+      white-space: nowrap;
+    }
+    header nav a {
+      font-weight: 700;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.15rem;
+      color: #DB86D9;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background-color 0.25s ease;
+      user-select: none;
+    }
+    header nav a:hover {
+      background-color: rgba(219, 134, 217, 0.2);
+    }
+
+    /* Main content */
+    main {
+      width: 100%;
+      max-width: 900px;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 12px 28px rgba(219,134,217,0.25);
+      padding: 40px 24px;
+      color: #4a124a;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      font-weight: 500;
+      text-align: center;
+      user-select: text;
+    }
+    main h1 {
+      font-weight: 700;
+      font-size: 2.75rem;
+      margin-bottom: 30px;
+      color: #873887;
+      text-shadow: 1px 1px 2px rgba(219,134,217,0.5);
+    }
+    main p {
+      margin-bottom: 40px;
+      color: #6b2f6b;
+      font-size: 1.25rem;
+    }
+
+    /* Embedded Form */
+    iframe {
+      width: 100%;
+      height: 1300px;
+      border: none;
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(219,134,217,0.3);
+    }
+
+    /* Footer */
+    footer {
+      width: 100%;
+      max-width: 1200px;
+      text-align: center;
+      padding: 24px;
+      background: #873887;
+      color: #F4EBEC;
+      font-weight: 700;
+      border-radius: 14px 14px 0 0;
+      box-shadow: 0 -4px 14px rgba(135,56,135,0.6);
+      font-size: 0.9rem;
+      user-select: none;
+      margin: 40px auto 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      main h1 {
+        font-size: 2.3rem;
+      }
+      main p {
+        font-size: 1.1rem;
+      }
+      iframe {
+        height: 1100px;
+      }
+      header nav a {
+        font-size: 1rem;
+        padding: 6px 10px;
+      }
+    }
+    @media (max-width: 480px) {
+      main h1 {
+        font-size: 1.9rem;
+      }
+      iframe {
+        height: 900px;
+      }
+      header .logo {
+        height: 48px;
+      }
+      .site-name {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <img src="shark-attack-twt-pic.png" alt="Shark Showdown Logo" class="logo" />
+      <div class="site-name">Shark Attack Gaming</div>
+    </div>
+    <nav>
+      <!-- Navigation links removed as requested -->
+    </nav>
+  </header>
+
+  <main>
+    <h1 id="register">Register for Shark Showdown Series</h1>
+    <p>Please fill out the form below to enter the tournament.</p>
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSclAvtgWdLr7hgiihV7_TBoNRvcJwx3uI85i29xx_tpKZZ5vg/viewform?usp=header"
+      title="Shark Showdown Registration Form"
+      aria-label="Tournament Registration Form"
+      ></iframe>
+  </main>
+
+  <footer role="contentinfo">
+    &copy; 2025 Shark Showdown Series. All rights reserved.
+  </footer>
+
+</body>
+</html>

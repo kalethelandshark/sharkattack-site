@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shark Showdown Series</title>
+  <!-- Font: Share Tech Mono for professional, gaming style -->
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Share Tech Mono', monospace;
+      background: #F4EBEC;
+      color: #4a124a;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 16px;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+      padding: 0 16px;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    header .logo {
+      height: 56px;
+      object-fit: contain;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    header .logo:hover {
+      transform: scale(1.05);
+    }
+    .site-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #873887;
+      user-select: none;
+      font-family: 'Share Tech Mono', monospace;
+      white-space: nowrap;
+    }
+    header nav a {
+      font-weight: 700;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.15rem;
+      color: #DB86D9;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background-color 0.25s ease;
+      user-select: none;
+    }
+    header nav a:hover {
+      background-color: rgba(219, 134, 217, 0.2);
+    }
+
+    /* Main container */
+    .main-container {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: nowrap;
+      padding: 0 16px;
+    }
+
+    /* Left column with banner and button */
+    .left-column {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      flex: 1 1 500px;
+      max-width: 500px; /* banner max width */
+      align-items: flex-start;
+    }
+
+    /* Banner */
+    .banner-wrapper {
+      height: 320px;
+      max-width: 500px; /* less wide banner */
+      width: 100%;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(219,134,217,0.4);
+      transition: box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .banner-wrapper:hover {
+      box-shadow: 0 14px 60px rgba(219,134,217,0.7);
+    }
+    .banner-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Button */
+    .btn-pay {
+      font-family: 'Share Tech Mono', monospace;
+      background: #DB86D9;
+      color: #F4EBEC;
+      padding: 16px 0;
+      font-size: 1.3rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      box-shadow: 0 8px 28px rgba(219,134,217,0.7);
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      width: 100%; /* same width as banner */
+      max-width: 500px;
+      white-space: nowrap;
+      display: inline-block;
+    }
+    .btn-pay:hover {
+      background: #C472C4;
+      box-shadow: 0 12px 38px rgba(196,114,196,0.85);
+    }
+
+    /* Prize info block below button */
+    .prize-info-block {
+      max-width: 500px;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #873887;
+      user-select: none;
+      text-align: center;
+      font-family: 'Share Tech Mono', monospace;
+      margin-top: 12px;
+      line-height: 1.4;
+      white-space: pre-line;
+    }
+
+    /* Schedule */
+    .schedule-container {
+      flex: 1 1 380px;
+      max-width: 380px; /* wider schedule */
+      background: #fff0f6;
+      border-radius: 24px;
+      padding: 24px 28px;
+      box-shadow: 0 12px 30px rgba(219,134,217,0.3);
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+      height: auto; /* let it expand */
+    }
+    .schedule-header {
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: #873887;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #DB86D9;
+      padding-bottom: 6px;
+      user-select: text;
+      text-align: center;
+    }
+    .schedule-content {
+      font-size: 1.12rem;
+      color: #4a124a;
+      font-weight: 400; /* less bold */
+      line-height: 1.5;
+      overflow-y: visible; /* no scroll */
+      max-height: none;
+      user-select: text;
+    }
+    .schedule-content strong {
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: #873887;
+    }
+    .event-time {
+      font-weight: 600;
+      color: #873887;
+    }
+    .date {
+      font-weight: 500;
+      font-size: 1rem;
+      color: #6b2f6b;
+      margin-left: 8px;
+      font-style: italic;
+    }
+    .schedule-content p {
+      margin: 6px 0;
+    }
+
+    /* Spreadsheet Section */
+    .spreadsheet-section {
+      width: 100%;
+      max-width: 900px;
+      margin: 48px auto 60px;
+      text-align: center;
+    }
+    .spreadsheet-section h2 a {
+      color: #873887;
+      font-weight: 700;
+      font-size: 1.4rem;
+      text-decoration: none;
+      font-family: 'Share Tech Mono', monospace;
+    }
+    .spreadsheet-section h2 a:hover {
+      text-decoration: underline;
+    }
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(219,134,217,0.3);
+      margin-top: 28px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 24px;
+      background: #873887;
+      color: #F4EBEC;
+      font-weight: 700;
+      border-radius: 14px 14px 0 0;
+      box-shadow: 0 -4px 14px rgba(135,56,135,0.6);
+      font-size: 0.9rem;
+      user-select: none;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    footer .socials {
+      margin-bottom: 14px;
+    }
+    footer .socials a {
+      margin: 0 14px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    footer .socials img {
+      width: 26px;
+      height: 26px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.2s ease;
+    }
+    footer .socials a:hover img {
+      transform: scale(1.15);
+    }
+    footer a.email-link {
+      color: #F4EBEC;
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 1rem;
+      font-family: 'Share Tech Mono', monospace;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .main-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .left-column,
+      .schedule-container {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+      }
+      iframe {
+        height: 500px;
+      }
+      .btn-pay {
+        width: 100%;
+        font-size: 1.15rem;
+        padding: 14px 0;
+        max-width: none;
+        align-self: center;
+      }
+      .prize-info-block {
+        max-width: 100%;
+      }
+      .schedule-header {
+        text-align: center;
+      }
+    }
+    @media (max-width: 480px) {
+      header .logo {
+        height: 48px;
+      }
+      .site-name {
+        font-size: 1.2rem;
+      }
+      .spreadsheet-section h2 a {
+        font-size: 1.2rem;
+      }
+      iframe {
+        height: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <img src="shark-attack-twt-pic.png" alt="Shark Showdown Logo" class="logo" />
+      <div class="site-name">Shark Attack Gaming</div>
+    </div>
+    <nav>
+      <a href="https://battlefy.com/shark-attack-gaming" target="_blank" rel="noopener noreferrer">Battlefy</a>
+    </nav>
+  </header>
+
+  <div class="main-container">
+    <div class="left-column">
+      <div class="banner-wrapper" aria-label="Site banner">
+        <img src="shark-attack-twt-banner.png" alt="Shark Showdown Series Banner" />
+      </div>
+      <a href="https://square.link/u/OWuXbbbH"
+         class="btn-pay" target="_blank" rel="noopener noreferrer">
+        Secure Your Spot
+      </a>
+      <div class="prize-info-block" aria-label="Tournament prize info">
+        64 Team // $2,500 Scaling Prize Pool<br />
+        Shark Attack #1 - August 2025
+      </div>
+    </div>
+
+    <div class="schedule-container" aria-label="Tournament schedule and registration">
+      <div class="schedule-header">Schedule</div>
+      <div class="schedule-content">
+        <p><strong>Day 1 <span class="date">(August 22nd)</span></strong></p>
+        <p><span class="event-time">5:30 EST</span> - Captains Meeting</p>
+        <p><span class="event-time">6:00 EST</span> - Opener bo3</p>
+        <p><span class="event-time">8:00 EST</span> - Opener Decider/Lower 1 bo3</p>
+        <p><span class="event-time">10:00 EST</span> - Lower Decider bo3</p>
+
+        <p style="margin-top: 1.5em;"><strong>Day 2 <span class="date">(August 23rd)</span></strong></p>
+        <p><span class="event-time">3:00 EST</span> - Round of 48 bo3 (top 16 have byes)</p>
+        <p><span class="event-time">5:00 EST</span> - Round of 32 bo3</p>
+        <p><span class="event-time">7:00 EST</span> - Round of 16 bo3</p>
+
+        <p style="margin-top: 1.5em;"><strong>Day 3 <span class="date">(August 24th)</span></strong></p>
+        <p><span class="event-time">3:00 EST</span> - Quarterfinals bo3</p>
+        <p><span class="event-time">5:00 EST</span> - Semifinals Bo3</p>
+        <p><span class="event-time">7:00 EST</span> - Grand Finals bo3 (Streamed)</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="spreadsheet-section" aria-label="Live Spreadsheet">
+    <h2>
+      <a href="https://docs.google.com/spreadsheets/d/1xMdEVwvIQGC2swGW8vO-RoICUW5l66yls4_VGmbFORo/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+        Live Spreadsheet (updated as new changes are made)
+      </a>
+    </h2>
+    <iframe
+      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTdTphS1o2lOpSRJ3_a1KLKRGvOSAd8Slj0RbHMYLmvCrua2rr8TB7GkMRqi5NkqVvBmPC-jUY2xCnZ/pubhtml?widget=true&amp;headers=false"
+      aria-label="Tournament live spreadsheet"
+    ></iframe>
+  </section>
+
+  <footer>
+    <div class="socials" aria-label="Social media links">
+      <a href="https://twitter.com/sharkshowdown" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/twitter.svg" alt="Twitter Icon" />
+      </a>
+      <a href="https://twitch.tv/sharkshowdown" target="_blank" rel="noopener noreferrer" aria-label="Twitch">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/twitch.svg" alt="Twitch Icon" />
+      </a>
+    </div>
+    <a href="mailto:kale@sharkattackgaming.com" class="email-link">kale@sharkattackgaming.com</a>
+    <p style="margin-top:12px;">&copy; 2025 Shark Showdown Series. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
