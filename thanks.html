@@ -117,15 +117,20 @@
   </div>
 
   <script>
-    fetch('https://sharkattack-backend.onrender.com/api/get-code')
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById('code').textContent = data.code;
-      })
-      .catch(err => {
-        document.getElementById('code').textContent = 'Error getting code.';
-      });
-  </script>
+(async () => {
+  const el = document.getElementById('code');
+  try {
+    const r = await fetch('/api/get-code', { method: 'GET' });
+    if (!r.ok) throw new Error(`${r.status} ${r.statusText}`);
+    const data = await r.json();
+    el.textContent = data.code || 'OUT-OF-CODES';
+  } catch (e) {
+    console.error(e);
+    el.textContent = 'Could not fetch a code. Please refresh.';
+  }
+})();
+</script>
+
 
 </body>
 </html>
