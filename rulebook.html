@@ -1,60 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Rulebook — Shark Attack Gaming</title>
-  <meta name="theme-color" content="#0f1115" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rulebook — Shark Showdown Series</title>
+
+  <!-- Font to match index -->
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+
   <style>
-    :root { --bg:#0f1115; --fg:#e6e6e6; --muted:#9aa3af; --card:#171a21; }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--fg);
-         font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
-    a{color:inherit}
-    .wrap{max-width:1100px;margin:0 auto;padding:20px}
-    .nav{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid #20232b}
-    .nav a{padding:8px 12px;border-radius:8px;text-decoration:none;background:transparent}
-    .nav a:hover{background:#1f232c}
-    .nav .brand{font-weight:700;letter-spacing:.3px;margin-right:auto}
-    .active{background:#263042}
-    h1{margin:.6rem 0 .4rem}
-    p.muted{color:var(--muted);margin:0 0 1rem}
-    .pdf-frame{position:relative;width:100%;height:min(85vh,1000px);border-radius:12px;overflow:hidden;background:var(--card);box-shadow:0 6px 24px rgba(0,0,0,.25)}
-    .pdf-frame iframe{width:100%;height:100%;border:0}
-    .pdf-actions{margin:.6rem 0 0}
-    .pdf-actions a{text-decoration:underline}
-    footer{color:var(--muted);font-size:14px;margin:24px 0 12px}
+    /* ====== Base (mirrors index.html) ====== */
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Share Tech Mono', monospace;
+      background: #0D0A0E;
+      color: #DB86D9;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 20px;
+      background: rgba(8, 6, 10, 0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(219,134,217,0.25);
+    }
+    .header-left { display: flex; align-items: center; gap: 12px; }
+    .logo { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; }
+    .site-name {
+      font-weight: 900; font-size: 1.2rem; letter-spacing: 0.6px;
+      color: #DB86D9; text-transform: uppercase;
+      text-shadow: 0 0 18px rgba(219,134,217,0.35), 0 0 36px rgba(196,114,196,0.25);
+      user-select: none;
+    }
+    header nav a {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #DB86D9;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.25s ease;
+      user-select: none;
+    }
+    header nav a:hover { background-color: rgba(219,134,217,0.2); }
+    header nav a.active { background-color: rgba(219,134,217,0.18); }
+
+    /* Page container */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 28px auto 40px;
+      padding: 0 16px;
+      display: grid;
+      gap: 18px;
+    }
+
+    h1 {
+      margin: 0 0 6px 0;
+      font-size: 2rem;
+      color: #DB86D9;
+      text-shadow: 0 0 16px rgba(219,134,217,0.35);
+    }
+    .muted {
+      color: #873887;
+      font-weight: 700;
+      margin: 0 0 14px 0;
+      line-height: 1.35;
+    }
+
+    /* Card-style frame to match your pink panels */
+    .pdf-card {
+      background: #fff0f6; /* same tone as schedule box on index */
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: 0 12px 30px rgba(219,134,217,0.3);
+    }
+
+    .pdf-frame {
+      position: relative;
+      width: 100%;
+      height: min(85vh, 1000px);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: inset 0 0 0 1px rgba(219,134,217,0.15);
+    }
+    .pdf-frame iframe { width: 100%; height: 100%; border: 0; }
+
+    .actions {
+      margin-top: 10px;
+      display: flex; gap: 14px; flex-wrap: wrap;
+      font-weight: 700;
+    }
+    .actions a {
+      color: #873887;
+      text-decoration: underline;
+    }
+
+    /* Footer (lightweight to match index tone) */
+    footer {
+      text-align: center;
+      color: #873887;
+      font-weight: 700;
+      padding: 20px 0 28px;
+      user-select: none;
+    }
+
+    /* Mobile */
+    @media (max-width: 700px) {
+      header { padding: 12px 14px; }
+      .site-name { font-size: 1rem; }
+      header nav a { font-size: 1rem; padding: 6px 10px; }
+      .container { margin: 20px auto 30px; }
+      .pdf-frame { height: 70vh; }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <nav class="nav">
-      <a class="brand" href="/">Shark Attack Gaming</a>
-      <a href="https://battlefy.com/funhavergg" target="_blank" rel="noopener">Battlefy</a>
-      <a class="active" href="/rulebook.html">Rulebook</a>
-    </nav>
 
-    <main>
+  <header>
+    <div class="header-left">
+      <img src="shark-attack-twt-pic.png" alt="Shark Showdown Logo" class="logo" />
+      <div class="site-name">Shark Attack Gaming</div>
+    </div>
+    <nav>
+      <a href="https://battlefy.com/shark-attack-gaming" target="_blank" rel="noopener noreferrer">Battlefy</a>
+      <a href="/rulebook.html" class="active">Rulebook</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div>
       <h1>Rulebook</h1>
       <p class="muted">Official rules for Shark Attack Gaming events. Read inline or download a copy below.</p>
 
-      <div class="pdf-frame">
-        <iframe
-          src="/static/docs/Shark%20Attack%20Rulebook%20-%20V1.pdf#view=FitH"
-          title="Shark Attack Gaming Rulebook PDF"
-          loading="lazy"
-          referrerpolicy="no-referrer"
-        ></iframe>
+      <div class="pdf-card">
+        <div class="pdf-frame">
+          <iframe
+            src="/static/docs/Shark%20Attack%20Rulebook%20-%20V1.pdf#view=FitH"
+            title="Shark Attack Gaming Rulebook PDF"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          ></iframe>
+        </div>
+
+        <div class="actions">
+          <a href="/static/docs/Shark%20Attack%20Rulebook%20-%20V1.pdf" target="_blank" rel="noopener">Open in new tab</a>
+          <a href="/static/docs/Shark%20Attack%20Rulebook%20-%20V1.pdf" download>Download</a>
+        </div>
       </div>
+    </div>
+  </main>
 
-      <p class="pdf-actions">
-        Trouble viewing? 
-        <a href="/static/docs/Shark%20Attack%20Rulebook%20-%20V1.pdf" target="_blank" rel="noopener">Open the PDF</a> ·
-        <a href="/static/docs/Shark%20Attack%20Rulebook%20-%20V1.pdf" download>Download</a>
-      </p>
-    </main>
+  <footer>
+    &copy; 2025 Shark Showdown Series. All rights reserved.
+  </footer>
 
-    <footer>© Shark Attack Gaming</footer>
-  </div>
 </body>
 </html>
