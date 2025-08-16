@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rulebook — Shark Attack Gaming</title>
+  <meta name="theme-color" content="#0f1115" />
+  <style>
+    :root { --bg:#0f1115; --fg:#e6e6e6; --muted:#9aa3af; --card:#171a21; }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--fg);
+         font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    a{color:inherit}
+    .wrap{max-width:1100px;margin:0 auto;padding:20px}
+    .nav{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid #20232b}
+    .nav a{padding:8px 12px;border-radius:8px;text-decoration:none;background:transparent}
+    .nav a:hover{background:#1f232c}
+    .nav .brand{font-weight:700;letter-spacing:.3px;margin-right:auto}
+    .active{background:#263042}
+    h1{margin:.6rem 0 .4rem}
+    p.muted{color:var(--muted);margin:0 0 1rem}
+    .pdf-frame{position:relative;width:100%;height:min(85vh,1000px);border-radius:12px;overflow:hidden;background:var(--card);box-shadow:0 6px 24px rgba(0,0,0,.25)}
+    .pdf-frame iframe{width:100%;height:100%;border:0}
+    .pdf-actions{margin:.6rem 0 0}
+    .pdf-actions a{text-decoration:underline}
+    footer{color:var(--muted);font-size:14px;margin:24px 0 12px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <a class="brand" href="/">Shark Attack Gaming</a>
+      <a href="https://battlefy.com/funhavergg" target="_blank" rel="noopener">Battlefy</a>
+      <a class="active" href="/rulebook.html">Rulebook</a>
+    </nav>
+
+    <main>
+      <h1>Rulebook</h1>
+      <p class="muted">Official rules for Shark Attack Gaming events. Read inline or download a copy below.</p>
+
+      <div class="pdf-frame">
+        <iframe
+          src="/static/docs/Shark%20Attack%20Rulebook%20-%20V1.pdf#view=FitH"
+          title="Shark Attack Gaming Rulebook PDF"
+          loading="lazy"
+          referrerpolicy="no-referrer"
+        ></iframe>
+      </div>
+
+      <p class="pdf-actions">
+        Trouble viewing? 
+        <a href="/static/docs/Shark%20Attack%20Rulebook%20-%20V1.pdf" target="_blank" rel="noopener">Open the PDF</a> ·
+        <a href="/static/docs/Shark%20Attack%20Rulebook%20-%20V1.pdf" download>Download</a>
+      </p>
+    </main>
+
+    <footer>© Shark Attack Gaming</footer>
+  </div>
+</body>
+</html>
